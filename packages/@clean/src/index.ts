@@ -2,7 +2,7 @@ import dotenv from 'dotenv';
 import http from 'http';
 
 import { Route } from './facades/route.facade';
-import { Request } from './interfaces/request';
+import { Request } from '@clean/router';
 
 dotenv.config();
 

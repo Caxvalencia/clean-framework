@@ -1,15 +1,19 @@
-import { HttpMethod } from '../constants/http-method';
-import { Request } from '../interfaces/request';
-import { Router } from '../router';
+import { Router, Request, HttpMethod } from '@clean/router';
 
 const router = new Router();
 
 export abstract class Route {
-  public static get(path: string, callback: (req: Request, res: Response, ...args: any) => void) {
+  public static get(
+    path: string,
+    callback: (req: Request, res: Response, ...args: any) => void
+  ) {
     router.add(HttpMethod.GET, path, callback);
   }
-  
-  public static put(path: string, callback: (req: Request, res: Response, ...args: any) => void) {
+
+  public static put(
+    path: string,
+    callback: (req: Request, res: Response, ...args: any) => void
+  ) {
     router.add(HttpMethod.PUT, path, callback);
   }
 

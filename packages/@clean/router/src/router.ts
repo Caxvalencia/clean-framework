@@ -30,7 +30,7 @@ export class Router {
       return;
     }
 
-    const routes = this.routes.get(method)!;
+    const routes = this.routes.get(method);
     const routeIndexFound = routes.findIndex(
       (route) => route.regex.toString() === regex.toString()
     );
@@ -65,9 +65,9 @@ export class Router {
     console.log(route, path, params);
 
     if (route) {
-      response.setHeader('X-Powered-By', 'clean/framework');
+      response.setHeader('X-Powered-By', 'clean-framework');
 
-      return route.callback(request, response, ...params!);
+      return route.callback(request, response, ...params);
     }
 
     throw new Error('Route not found');

@@ -3,7 +3,7 @@ import { Request } from './interfaces/request';
 
 type RouteProvider = {
   regex: RegExp;
-  callback: Function;
+  callback: (req, res, ...args) => void;
   duplicated: boolean;
 };
 
@@ -70,6 +70,12 @@ export class Router {
       return route.callback(request, response, ...params);
     }
 
-    throw new Error('Route not found');
+    throw new RouteNotfoundException();
+  }
+}
+
+class RouteNotfoundException extends Error {
+  constructor() {
+    super('Route not found')
   }
 }

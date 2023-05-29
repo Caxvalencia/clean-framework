@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@clean/framework": ["packages/@clean/framework/src/index.ts"],
       "@clean/router": ["packages/@clean/router/src/index.ts"]
     }
   },

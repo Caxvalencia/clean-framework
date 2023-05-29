@@ -16,7 +16,11 @@ export class Router {
     this.routes = new Map<HttpMethod, RouteProvider[]>();
   }
 
-  public add(method: HttpMethod = HttpMethod.GET, path: string, callback: (req: any, res: any, ...args: any) => void) {
+  public add(
+    method: HttpMethod = HttpMethod.GET,
+    path: string,
+    callback: (req: any, res: any, ...args: any) => void
+  ) {
     const regex = new RegExp(`^${path.replace(/:\w+/g, '([a-zA-Z0-9\\-]+)')}$`);
     const route = { regex, callback, duplicated: false };
 
@@ -27,7 +31,9 @@ export class Router {
     }
 
     const routes = this.routes.get(method)!;
-    const routeIndexFound = routes.findIndex((route) => route.regex.toString() === regex.toString());
+    const routeIndexFound = routes.findIndex(
+      (route) => route.regex.toString() === regex.toString()
+    );
 
     if (routeIndexFound !== -1) {
       route.duplicated = true;
@@ -59,7 +65,7 @@ export class Router {
     console.log(route, path, params);
 
     if (route) {
-      response.setHeader('X-Powered-By', 'Cax');
+      response.setHeader('X-Powered-By', 'clean/framework');
 
       return route.callback(request, response, ...params!);
     }
